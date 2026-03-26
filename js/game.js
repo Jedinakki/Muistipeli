@@ -17,4 +17,4 @@ function uudelleen(){
 
 
 
-nappi.addEventListener("click", uudelleen)s
+nappi.addEventListener("click", uudelleen)
