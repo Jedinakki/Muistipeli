@@ -8,17 +8,29 @@ let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 
+let yritykset = 0
+let parimaar = 0
+let oikein = 0
+
 function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
+    for (let i = array.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i+1));
+    let k = array[i];
+    array[i] = array[j];
+    array[j] = k;
+}
 }
 
 export function createBoard(cardCount) {
+    parimaar = cardCount/2
+    oikein = 0
+    yritykset = 0
     const selectedCards = allCards.slice(0, cardCount / 2);
     const cards = [...selectedCards, ...selectedCards];
     shuffle(cards);
     cards.forEach(card => {
         const cardElement = createCardElement(card);
-        cardElement.addEventListener('click', () => flipCard(cardElement, handleCardFlip));
+        cardElement.addEventListener('click', () => flipCard(cardElement, handleCardFlip, lockBoard));
         gameBoard.appendChild(cardElement);
     });
 }
@@ -47,6 +59,7 @@ function checkForMatch() {
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+    oikein += 1
     resetBoard();
 }
 
@@ -61,6 +74,16 @@ function unflipCards() {
     }, 1500);
 }
 
+function voititko(){
+    if (parimaar === oikein) {
+        setTimeout(()=>{alert(`Voitit pelin ${yritykset} yrityksessä`)})
+        
+    }
+}
+
 function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
+    yritykset += 1
+    voititko()
 }
+
