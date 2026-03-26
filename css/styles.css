@@ -6,8 +6,13 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    min-width: 500px;
 }
 
+button {
+    padding: 10px;
+    margin: 20px;
+}
 #game-board {
     display: grid;
     grid-template-columns: repeat(4, 100px);
@@ -21,10 +26,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 40px;
     cursor: pointer;
 }
 
 .card.flipped {
     background-color: #fff;
+}
+@media (max-height: 570px){
+#game-board {
+    grid-template-columns: repeat(8, 100px);
+}
 }
