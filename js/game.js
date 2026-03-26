@@ -1,10 +1,20 @@
 import { createBoard } from './board.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+const nappi = document.getElementById("nappi")
+
+function uudelleen(){
+    document.getElementById("game-board").innerHTML = ""
+
+    
     const cardCount = parseInt(prompt("Syötä korttien määrä (parillinen luku):"), 10);
     if (cardCount % 2 !== 0) {
         alert("Korttien määrän täytyy olla parillinen luku.");
         return;
     }
-    createBoard(cardCount);
-});
+        createBoard(cardCount);
+    
+}
+
+
+
+nappi.addEventListener("click", uudelleen)s
