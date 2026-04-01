@@ -8,6 +8,7 @@ let firstCard = null;
 let secondCard = null;
 let lockBoard = false;
 
+const laskuri = document.getElementById("yritykset")
 let yritykset = 0
 let parimaar = 0
 let oikein = 0
@@ -33,6 +34,11 @@ export function createBoard(cardCount) {
         cardElement.addEventListener('click', () => flipCard(cardElement, handleCardFlip, lockBoard));
         gameBoard.appendChild(cardElement);
     });
+    LaskurinPaivitys()
+}
+
+function LaskurinPaivitys(){
+    laskuri.innerText = `Yritykset ${yritykset}`
 }
 
 function handleCardFlip(cardElement) {
@@ -84,6 +90,7 @@ function voititko(){
 function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
     yritykset += 1
+    LaskurinPaivitys()
     voititko()
 }
 
