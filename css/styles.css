@@ -29,7 +29,10 @@ button {
     font-size: 40px;
     cursor: pointer;
 }
-
+#yritykset{
+    font-size: 20px;
+    padding: 5px;
+}
 .card.flipped {
     background-color: #fff;
 }
