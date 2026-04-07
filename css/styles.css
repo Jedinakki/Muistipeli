@@ -29,15 +29,30 @@ button {
     font-size: 40px;
     cursor: pointer;
 }
-#yritykset{
+.yritykset{
+    display: flex;
     font-size: 20px;
     padding: 5px;
+    width: 400px;
+    
+    justify-content: space-between;
 }
+
 .card.flipped {
     background-color: #fff;
 }
 @media (max-height: 570px){
 #game-board {
-    grid-template-columns: repeat(8, 100px);
+    grid-template-columns: repeat(6, 100px);
+}
+}
+
+@media (max-width: 570px){
+.card{
+    width: 75px;
+    height: 75px;
+}
+#game-board {
+    grid-template-columns: repeat(4,75px);
 }
 }
