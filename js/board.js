@@ -12,6 +12,8 @@ const laskuri = document.getElementById("yritykset")
 let yritykset = 0
 let parimaar = 0
 let oikein = 0
+let aika = 0
+let aikaobjekti
 
 function shuffle(array) {
     for (let i = array.length -1; i > 0; i--) {
@@ -23,9 +25,12 @@ function shuffle(array) {
 }
 
 export function createBoard(cardCount) {
+    if (cardCount>32) cardCount = 32
     parimaar = cardCount/2
     oikein = 0
     yritykset = 0
+    aika = 0
+    clearInterval(aikaobjekti)
     const selectedCards = allCards.slice(0, cardCount / 2);
     const cards = [...selectedCards, ...selectedCards];
     shuffle(cards);
@@ -34,11 +39,33 @@ export function createBoard(cardCount) {
         cardElement.addEventListener('click', () => flipCard(cardElement, handleCardFlip, lockBoard));
         gameBoard.appendChild(cardElement);
     });
-    LaskurinPaivitys()
+    LuoYritykset()
+    LuoAika()
+    aikaobjekti = setInterval(Aikaplus,1000)
+}
+
+function LuoYritykset(){
+    const div = document.createElement("div")
+    const text = document.createTextNode("Yritykset 0")
+    div.id = "esine"
+    div.appendChild(text)
+    laskuri.appendChild(div)
+}
+function LuoAika(){
+    const div = document.createElement("div")
+    const text = document.createTextNode("Aika 0s")
+    div.id = "esine"
+    div.appendChild(text)
+    laskuri.appendChild(div)
 }
 
 function LaskurinPaivitys(){
-    laskuri.innerText = `Yritykset ${yritykset}`
+    laskuri.children[0].innerHTML = `Yritykset ${yritykset}`
+}
+
+function Aikaplus(){
+    aika += 1
+    laskuri.children[1].innerHTML = `Aika ${aika}s`
 }
 
 function handleCardFlip(cardElement) {
@@ -83,7 +110,7 @@ function unflipCards() {
 function voititko(){
     if (parimaar === oikein) {
         setTimeout(()=>{alert(`Voitit pelin ${yritykset} yrityksessä`)})
-        
+        clearInterval(aikaobjekti)
     }
 }
 
