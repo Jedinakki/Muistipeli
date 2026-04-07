@@ -4,7 +4,7 @@ const nappi = document.getElementById("nappi")
 
 function uudelleen(){
     document.getElementById("game-board").innerHTML = ""
-
+    document.getElementById("yritykset").innerHTML = ""
     
     const cardCount = parseInt(prompt("Syötä korttien määrä (parillinen luku):"), 10);
     if (cardCount % 2 !== 0) {
