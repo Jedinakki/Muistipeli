@@ -6,7 +6,7 @@ function uudelleen(){
     document.getElementById("game-board").innerHTML = ""
     document.getElementById("yritykset").innerHTML = ""
     
-    const cardCount = parseInt(prompt("Syötä korttien määrä (parillinen luku):"), 10);
+    const cardCount = parseInt(prompt("Syötä korttien määrä (parillinen luku, max 32):"), 10);
     if (cardCount % 2 !== 0) {
         alert("Korttien määrän täytyy olla parillinen luku.");
         return;
