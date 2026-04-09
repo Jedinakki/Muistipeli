@@ -41,11 +41,16 @@ button {
 .card.flipped {
     background-color: #fff;
 }
-@media (max-height: 570px){
+@media (max-height: 900px){
+.card{
+    width: 75px;
+    height: 75px;
+}
 #game-board {
-    grid-template-columns: repeat(6, 100px);
+    grid-template-columns: repeat(5,75px);
 }
 }
+
 
 @media (max-width: 570px){
 .card{
